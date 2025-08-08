@@ -97,28 +97,3 @@ document.body.appendChild(cursor);
 document.addEventListener("mousemove", (e) => {
   cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
 });
-
-// Efek emoji bintang mengikuti kursor
-document.addEventListener("mousemove", (e) => {
-  const star = document.createElement("div");
-  star.textContent = "💤";
-  star.style.position = "absolute";
-  star.style.left = e.pageX + "px";
-  star.style.top = e.pageY + "px";
-  star.style.fontSize = "18px";
-  star.style.pointerEvents = "none";
-  star.style.opacity = 1;
-  star.style.transition = "all 0.8s ease-out";
-
-  document.body.appendChild(star);
-
-  setTimeout(() => {
-    star.style.opacity = 0;
-    star.style.transform = "translateY(-20px)";
-  }, 10);
-
-  setTimeout(() => {
-    document.body.removeChild(star);
-  }, 800);
-});
-
