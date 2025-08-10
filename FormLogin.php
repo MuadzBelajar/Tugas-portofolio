@@ -39,7 +39,10 @@ if(isset ($_SESSION['user'])) {
         </div>
 
         <button type="submit" class="login-btn">Login</button>
-      
+      <div>
+        <a href="index.php" class="back-btn">Back</a>
+        </div>
+      </div>
       </form>
     </div>
   </div>

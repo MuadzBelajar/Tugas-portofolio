@@ -27,9 +27,8 @@ if(isset ($_SESSION['user'])) {
         <li><a href="#education">Educational Background</a></li>
         <li><a href="#Project">Project</a></li>
         <li><a href="#contacts">Contacts</a></li>
-       <li><a href="FormLogin.php">Log In</a></li>
-
-      </ul>
+        <li><a href="FormLogin.php">Log In</a></li>
+       </ul>
     </nav>
   </header>
 

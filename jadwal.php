@@ -138,8 +138,10 @@ if (!isset($_SESSION['user'])) {
 
 <!-- Content -->
 <div class="content" id="content">
-  <h1>Selamat datang, <?php echo ($_SESSION['user']) ?>!</h1>
-  <p>Anda berhasil login menggunakan autentikasi sederhana.</p>
+  <h1>Student's Schedule</h1>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+    Nesciunt placeat excepturi sint recusandae nam quisquam porro ipsa provident eum amet nobis, 
+    alias veniam sit non eligendi. Obcaecati, modi! Voluptatum, tempore!</p>
 </div>
 
 <script>
