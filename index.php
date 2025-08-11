@@ -59,10 +59,10 @@ if(isset ($_SESSION['user'])) {
   <section id="education">
     <h2>Educational Record</h2>
     <p>
-       TK IT Lukmanul Hakim || 2015-2016 <br> 
-       SD IT Al-Ilmu || 2016-2018<br>
-       Madrasah Ibtidaiyyah Abu Hurairah || 2018-2020<br>
-       SMP IT Ibnul Qayyim || 2020-2023<br>
+       TK IT Lukmanul Hakim || 2016-2017 <br> 
+       SD IT Al-Ilmu || 2017-2019<br>
+       Madrasah Ibtidaiyyah Abu Hurairah || 2019-2021<br>
+       SMP IT Ibnul Qayyim || 2021-2024<br>
        RPL department of vocational school Ibnul Qayyim || 2024-Now <br>
        Join in an Extracurricular: Grafiqis || 2024-Now
     </p>
