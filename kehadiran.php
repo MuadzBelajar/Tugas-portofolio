@@ -91,10 +91,10 @@ if (!isset($_SESSION['user'])) {
     }
 
     /* Content */
-    .content {
+     .content {
       flex-grow: 1;
-      padding: 20px;
-      paddding-top: 100px;
+      padding: 70px;
+      padding-top: 20px;
       transition: filter 0.3s ease;
       width: 100%;
     }
