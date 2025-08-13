@@ -1,6 +1,6 @@
 <h1>Muadz's Portofolio</h1>
 
-Initial view of my first deployment website
+Initial view of my first deployment website in the form of a portfolio website
 
 you can see it here=> https://tugas-portofolio-phi.vercel.app/
 <img width="1349" height="636" alt="image" src="https://github.com/user-attachments/assets/7e0f219a-db01-4147-b230-0a7019b31c5f" />
