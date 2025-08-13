@@ -27,8 +27,8 @@ if (!isset($_SESSION['user'])) {
       top: 0;
       width: 240px;
       height: 100%;
-      background-color: #4426e7;
-      color: #d4f657;
+      background-color: #E3E7B3;
+      color: #E4CE8E;
       padding-top: 20px;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -42,6 +42,7 @@ if (!isset($_SESSION['user'])) {
     .sidebar h2 {
       text-align: center;
       margin-bottom: 15px;
+  
     }
 
     .sidebar a {
@@ -53,7 +54,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .sidebar a:hover {
-      background-color: #d4f657;
+      background-color: #E4CE8E;
       color: #000;
     }
 
@@ -91,7 +92,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     /* Content */
-     .content {
+    .content {
       flex-grow: 1;
       padding: 70px;
       padding-top: 20px;
@@ -99,12 +100,13 @@ if (!isset($_SESSION['user'])) {
       width: 100%;
     }
 
+
     /* Toggle button */
     .toggle-btn {
       position: fixed;
       left: 10px;
       top: 10px;
-      background-color: #d4f657;
+      background-color: #E4CE8E;
       color: white;
       border: none;
       padding: 8px 12px;

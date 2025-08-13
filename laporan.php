@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard</title>
+  <title>Detail Laporan</title>
   <style>
     body {
       margin: 0;
@@ -27,8 +27,8 @@ if (!isset($_SESSION['user'])) {
       top: 0;
       width: 240px;
       height: 100%;
-      background-color: #4426e7;
-      color: #d4f657;
+      background-color: #E3E7B3;
+      color: #E4CE8E;
       padding-top: 20px;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -53,7 +53,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .sidebar a:hover {
-      background-color: #d4f657;
+      background-color: #E4CE8E;
       color: #000;
     }
 
@@ -93,19 +93,18 @@ if (!isset($_SESSION['user'])) {
     /* Content */
     .content {
       flex-grow: 1;
-      padding: 70px;
-      padding-top: 20px;
+      padding: 30px 50px;
       transition: filter 0.3s ease;
       width: 100%;
+      margin-left: 10px;    
     }
-
 
     /* Toggle button */
     .toggle-btn {
       position: fixed;
       left: 10px;
       top: 10px;
-      background-color: #d4f657;
+      background-color: #E4CE8E;
       color: white;
       border: none;
       padding: 8px 12px;
@@ -113,8 +112,90 @@ if (!isset($_SESSION['user'])) {
       font-size: 18px;
       z-index: 1100;
       border-radius: 4px;
-      
     }
+
+    /* Detail card */
+    .detail-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .detail-header {
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    .btn-brown {
+      background: #E4CE8E;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 15px;
+      border: none;
+      cursor: pointer;
+      margin-top: 1px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-brown:hover {
+      background-color: #d4b76f;
+    }
+
+    /* Comment section */
+    .comment-box {
+      margin-top: 30px;
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .comment-input {
+      display: flex;
+      margin-top: 10px;
+      border: 2px solid #E4CE8E;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .comment-input input {
+      flex: 1;
+      border: none;
+      padding: 8px;
+      outline: none;
+    }
+
+    .comment-input button {
+      background: #E4CE8E;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+
+    .comment-meta {
+      font-size: 12px;
+      color: gray;
+    }
+
+    /* Table */
+    .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
   </style>
 </head>
 <body>
@@ -139,11 +220,84 @@ if (!isset($_SESSION['user'])) {
 
 <!-- Content -->
 <div class="content" id="content">
-  <h1>Student's Reportment</h1>
-  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-    Nesciunt placeat excepturi sint recusandae nam quisquam porro ipsa provident eum amet nobis, 
-    alias veniam sit non eligendi. Obcaecati, modi! Voluptatum, tempore!</p>
+  <div class="detail-card">
+    <div class="detail-header">
+      <h2>Student Report</h2>
+      <small>Present time</small>
+    </div>
+    <p>Absen, tidak ada surat.</p>
+  
+  <!-- Komentar 1 -->
+<div class="comment-box">
+  <strong>Nama</strong>
+  <div class="comment-input">
+    <input type="text" placeholder="Tulis pesan..." />
+
+  </div>
 </div>
+
+<!-- Komentar 2 -->
+<div class="comment-box">
+  <strong>NIS</strong>
+  <div class="comment-input">
+    <input type="text" placeholder="Tulis pesan..." />
+  </div>
+</div>
+
+<!-- Komentar 3 -->
+<div class="comment-box">
+  <strong>Email</strong>
+  <div class="comment-input">
+    <input type="text" placeholder="Tulis pesan..." />
+  </div>
+</div>
+
+<!-- Komentar 4 -->
+<div class="comment-box">
+  <strong>Jurusan</strong>
+  <div class="comment-input">
+    <input type="text" placeholder="Tulis pesan..." />
+  </div>
+</div>
+
+<!-- Komentar 5 -->
+<div class="comment-box">
+  <strong>Email</strong>
+  <div class="comment-input">
+    <input type="text" placeholder="Tulis pesan..." />
+  </div>
+</div>
+
+<!-- Komentar 6 -->
+<div class="comment-box">
+  <strong>Email</strong>
+  <div class="comment-input">
+    <input type="text" placeholder="Tulis pesan..." />
+  </div>
+</div>
+
+<button class="btn-brown">Kirim Laporan</button>
+
+</div>
+
+<div class="table-container">
+    <table>
+        
+            <tr>
+                <th>No</th>
+                <th>Aksi</th>
+                <th>Gambar</th>
+                <th>NIS</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Jurusan</th>
+                <th>Keterangan</th>
+                <th>Alamat</th>
+                <th>No HP</th>
+            </tr>
+    
+      </div>
+
 
 <script>
   function toggleSidebar() {
