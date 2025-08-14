@@ -11,9 +11,7 @@ view of login page
 
 
 First view of sidebar
-<img width="1366" height="642" alt="image" src="https://github.com/user-attachments/assets/9e1208bf-cbbc-4814-a1ef-5888325d312f" />
-
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/102a8a18-58eb-4593-ab55-dedf9afadea7" />
 
 Second view of sidebar 
-<img width="1350" height="641" alt="image" src="https://github.com/user-attachments/assets/56776d22-d5c9-4d11-8b27-383592915456" />
-
+<img width="1347" height="642" alt="image" src="https://github.com/user-attachments/assets/33cbc25f-56c7-4dc3-985c-94405911c54b" />
