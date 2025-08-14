@@ -27,8 +27,8 @@ if (!isset($_SESSION['user'])) {
       top: 0;
       width: 240px;
       height: 100%;
-      background-color: #E3E7B3;
-      color: #E4CE8E;
+      background-color: #16A085;
+      color: #FFFFFF;
       padding-top: 20px;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -53,7 +53,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .sidebar a:hover {
-      background-color: #E4CE8E;
+      background-color: #FFFFFF;
       color: #000;
     }
 
@@ -104,7 +104,7 @@ if (!isset($_SESSION['user'])) {
       position: fixed;
       left: 10px;
       top: 10px;
-      background-color: #E4CE8E;
+      background-color: #16A085;
       color: white;
       border: none;
       padding: 8px 12px;
@@ -128,7 +128,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .btn-brown {
-      background: #E4CE8E;
+      background: #096b57ff;
       color: white;
       padding: 8px 15px;
       border-radius: 15px;
@@ -139,7 +139,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .btn-brown:hover {
-      background-color: #d4b76f;
+      background-color: #16A085;
     }
 
     /* Comment section */
@@ -153,7 +153,7 @@ if (!isset($_SESSION['user'])) {
     .comment-input {
       display: flex;
       margin-top: 10px;
-      border: 2px solid #E4CE8E;
+      border: 2px solid #16A085;
       border-radius: 5px;
       overflow: hidden;
     }
@@ -166,7 +166,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .comment-input button {
-      background: #E4CE8E;
+      background: #16A085;
       color: white;
       border: none;
       padding: 8px 15px;
@@ -178,8 +178,9 @@ if (!isset($_SESSION['user'])) {
       color: gray;
     }
 
-    /* Table */
-    .table-container {
+    /* Table-rossi */
+
+        .table-container {
             overflow-x: auto;
             margin-top: 20px;
         }
@@ -195,8 +196,69 @@ if (!isset($_SESSION['user'])) {
         }
         th {
             background-color: #f2f2f2;
+
         }
-  </style>
+        h1 {
+            margin-bottom: 10px;
+        }
+        .top-bar {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display:inline-block;
+            padding:6px 12px;
+            background:#2d8f4f;
+            color:white;
+            text-decoration:none;
+            border-radius:4px;
+            font-size:14px;
+        }
+        .btn.secondary { background:#3498db; }
+        .btn.danger { background:#c0392b; }
+        table {
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        th, td {
+            padding:10px 12px;
+            border-bottom:1px solid #eee;
+            text-align:left;
+            vertical-align:middle;
+        }
+        th {
+            background:#fafafa;
+            font-weight:600;
+        }
+        tr:last-child td { border-bottom: none; }
+        .thumb {
+            width:60px;
+            height:60px;
+            object-fit:cover;
+            border-radius:6px;
+            border:1px solid #ddd;
+        }
+        .aksi-btns a {
+            margin-right:6px;
+            font-size:13px;
+            padding:6px 8px;
+            border-radius:4px;
+            text-decoration:none;
+            color:white;
+        }
+        .aksi-btns .view { background:#27ae60; }
+        .aksi-btns .edit { background:#f39c12; }
+        .aksi-btns .delete { background:#e74c3c; }
+        .note { color:#666; font-size:13px; margin-top:8px; }
+        @media (max-width:800px) {
+            .top-bar { flex-direction:column; align-items:flex-start; gap:8px; }
+            th, td { font-size:14px; padding:8px; }
+        } </style>
+
 </head>
 <body>
 
@@ -277,26 +339,59 @@ if (!isset($_SESSION['user'])) {
 </div>
 
 <button class="btn-brown">Kirim Laporan</button>
-
 </div>
 
-<div class="table-container">
+<div class="container">
+    <div class="top-bar">
+        <div>
+            <h1>Daftar Laporan Siswa</h1>
+        </div>
+        <div>
+            <a href="laporan.php" class="btn secondary">Refresh</a>
+            <a href="#" class="btn">Tambah Baru</a>
+        </div>
+    </div>
+
     <table>
-        
+        <thead>
             <tr>
-                <th>No</th>
-                <th>Aksi</th>
+                <th style="width:56px">No</th>
                 <th>Gambar</th>
-                <th>NIS</th>
                 <th>Nama</th>
+                <th>NIS</th>
                 <th>Email</th>
                 <th>Jurusan</th>
-                <th>Keterangan</th>
-                <th>Alamat</th>
-                <th>No HP</th>
+                <th style="width:200px">Aksi</th>
             </tr>
-    
-      </div>
+        </thead>
+        <tbody>
+            <?php if (empty($students)): ?>
+                <tr>
+                    <td colspan="7" style="text-align:center; padding:30px;">Data kosong.</td>
+                </tr>
+            <?php else: ?>
+                <?php $no = 1; foreach ($students as $s): ?>
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td>
+                        <img src="<?= htmlspecialchars($s['gambar']); ?>" alt="gambar-<?= $no ?>" class="thumb">
+                    </td>
+                    <td><?= htmlspecialchars($s['nama']); ?></td>
+                    <td><?= htmlspecialchars($s['nis']); ?></td>
+                    <td><?= htmlspecialchars($s['email']); ?></td>
+                    <td><?= htmlspecialchars($s['jurusan']); ?></td>
+                    <td class="aksi-btns">
+                        <!-- Ganti href sesuai route / handler yang kamu punya -->
+                        <a href="view.php?nis=<?= urlencode($s['nis']); ?>" class="view">View</a>
+                        <a href="edit.php?nis=<?= urlencode($s['nis']); ?>" class="edit">Edit</a>
+                        <a href="delete.php?nis=<?= urlencode($s['nis']); ?>" class="delete" onclick="return confirm('Hapus data <?= addslashes($s['nama']) ?>?')">Delete</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </tbody>
+    </table>
+
 
 
 <script>

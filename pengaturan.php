@@ -27,8 +27,8 @@ if (!isset($_SESSION['user'])) {
       top: 0;
       width: 240px;
       height: 100%;
-      background-color: #E3E7B3;
-      color: #E4CE8E;
+      background-color: #16A085;
+      color: #FFFFFF;
       padding-top: 20px;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -54,7 +54,7 @@ if (!isset($_SESSION['user'])) {
     }
 
     .sidebar a:hover {
-      background-color: #E4CE8E;
+      background-color: #FFFFFF ;
       color: #000;
     }
 
@@ -106,7 +106,7 @@ if (!isset($_SESSION['user'])) {
       position: fixed;
       left: 10px;
       top: 10px;
-      background-color: #E4CE8E;
+      background-color: #16A085;
       color: white;
       border: none;
       padding: 8px 12px;
