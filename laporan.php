@@ -5,6 +5,9 @@ if (!isset($_SESSION['user'])) {
   header("Location: FormLogin.php"); 
   exit;
 }
+
+require 'function.php';
+$siswa = mysqli_query($conn, "SELECT * FROM siswa");
 ?>
 <!DOCTYPE html>
 <html>
@@ -144,15 +147,15 @@ if (!isset($_SESSION['user'])) {
 
     /* Comment section */
     .comment-box {
-      margin-top: 30px;
+      margin-top: 10px;
       background: white;
       border-radius: 8px;
-      padding: 15px;
+      padding: 10px;
     }
 
     .comment-input {
       display: flex;
-      margin-top: 10px;
+      margin-top: 5px;
       border: 2px solid #16A085;
       border-radius: 5px;
       overflow: hidden;
@@ -163,6 +166,8 @@ if (!isset($_SESSION['user'])) {
       border: none;
       padding: 8px;
       outline: none;
+      height: 35px;
+      font-size: 14px;
     }
 
     .comment-input button {
@@ -217,7 +222,7 @@ if (!isset($_SESSION['user'])) {
             font-size:14px;
         }
         .btn.secondary { background:#3498db; }
-        .btn.danger { background:#c0392b; }
+        .btn.danger { background:#16A085; }
         table {
             width:100%;
             border-collapse:collapse;
@@ -284,10 +289,11 @@ if (!isset($_SESSION['user'])) {
 <div class="content" id="content">
   <div class="detail-card">
     <div class="detail-header">
-      <h2>Student Report</h2>
-      <small>Present time</small>
+      <h2>Insert Student Report</h2>
+      <small>15 August 2025</small>
     </div>
-    <p>Absen, tidak ada surat.</p>
+    <p>Silakan isi data siswa di bawah ini untuk membuat laporan baru.</p>
+  
   
   <!-- Komentar 1 -->
 <div class="comment-box">
@@ -356,37 +362,37 @@ if (!isset($_SESSION['user'])) {
         <thead>
             <tr>
                 <th style="width:56px">No</th>
-                <th>Gambar</th>
                 <th>Nama</th>
                 <th>NIS</th>
                 <th>Email</th>
                 <th>Jurusan</th>
+                <th>Gambar</th>
                 <th style="width:200px">Aksi</th>
             </tr>
         </thead>
         <tbody>
-            <?php if (empty($students)): ?>
+            <?php if (empty($siswa)): ?>
                 <tr>
                     <td colspan="7" style="text-align:center; padding:30px;">Data kosong.</td>
                 </tr>
             <?php else: ?>
-                <?php $no = 1; foreach ($students as $s): ?>
+                <?php $i = 1; foreach ($siswa as $row): ?>
                 <tr>
-                    <td><?= $no++; ?></td>
-                    <td>
-                        <img src="<?= htmlspecialchars($s['gambar']); ?>" alt="gambar-<?= $no ?>" class="thumb">
-                    </td>
-                    <td><?= htmlspecialchars($s['nama']); ?></td>
-                    <td><?= htmlspecialchars($s['nis']); ?></td>
-                    <td><?= htmlspecialchars($s['email']); ?></td>
-                    <td><?= htmlspecialchars($s['jurusan']); ?></td>
-                    <td class="aksi-btns">
-                        <!-- Ganti href sesuai route / handler yang kamu punya -->
-                        <a href="view.php?nis=<?= urlencode($s['nis']); ?>" class="view">View</a>
-                        <a href="edit.php?nis=<?= urlencode($s['nis']); ?>" class="edit">Edit</a>
-                        <a href="delete.php?nis=<?= urlencode($s['nis']); ?>" class="delete" onclick="return confirm('Hapus data <?= addslashes($s['nama']) ?>?')">Delete</a>
-                    </td>
-                </tr>
+                   <tr>
+                     <td><?= $i++; ?></td>
+                     <td><?= htmlspecialchars($row['nama']); ?></td>
+                     <td><?= htmlspecialchars($row['nis']); ?></td>
+                     <td><?= htmlspecialchars($row['email']); ?></td>
+                     <td><?= htmlspecialchars($row['jurusan']); ?></td>
+                     <td>
+                    <img src="<?= htmlspecialchars($row['gambar']); ?>" alt="gambar-<?= $i ?>" class="thumb">
+                  </td>
+                <td class="aksi-btns">
+                  <a href="view.php?nis=<?= urlencode($row['nis']); ?>" class="view">View</a>
+                  <a href="edit.php?nis=<?= urlencode($row['nis']); ?>" class="edit">Edit</a>
+                  <a href="delete.php?nis=<?= urlencode($row['nis']); ?>" class="delete" onclick="return confirm('Hapus data <?= addslashes($row['nama']) ?>?')">Delete</a>
+                </td>
+               </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
         </tbody>
@@ -403,3 +409,5 @@ if (!isset($_SESSION['user'])) {
 
 </body>
 </html>
+
+

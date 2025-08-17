@@ -5,7 +5,10 @@ if (!isset($_SESSION['user'])) {
   header("Location: FormLogin.php"); 
   exit;
 }
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
