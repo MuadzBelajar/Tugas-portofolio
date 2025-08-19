@@ -125,11 +125,6 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .detail-header {
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-    }
-
     .btn-brown {
       background: #096b57ff;
       color: white;
@@ -288,64 +283,6 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
 <!-- Content -->
 <div class="content" id="content">
   <div class="detail-card">
-    <div class="detail-header">
-      <h2>Insert Student Report</h2>
-      <small>15 August 2025</small>
-    </div>
-    <p>Silakan isi data siswa di bawah ini untuk membuat laporan baru.</p>
-  
-  
-  <!-- Komentar 1 -->
-<div class="comment-box">
-  <strong>Nama</strong>
-  <div class="comment-input">
-    <input type="text" placeholder="Tulis pesan..." />
-
-  </div>
-</div>
-
-<!-- Komentar 2 -->
-<div class="comment-box">
-  <strong>NIS</strong>
-  <div class="comment-input">
-    <input type="text" placeholder="Tulis pesan..." />
-  </div>
-</div>
-
-<!-- Komentar 3 -->
-<div class="comment-box">
-  <strong>Email</strong>
-  <div class="comment-input">
-    <input type="text" placeholder="Tulis pesan..." />
-  </div>
-</div>
-
-<!-- Komentar 4 -->
-<div class="comment-box">
-  <strong>Jurusan</strong>
-  <div class="comment-input">
-    <input type="text" placeholder="Tulis pesan..." />
-  </div>
-</div>
-
-<!-- Komentar 5 -->
-<div class="comment-box">
-  <strong>Email</strong>
-  <div class="comment-input">
-    <input type="text" placeholder="Tulis pesan..." />
-  </div>
-</div>
-
-<!-- Komentar 6 -->
-<div class="comment-box">
-  <strong>Email</strong>
-  <div class="comment-input">
-    <input type="text" placeholder="Tulis pesan..." />
-  </div>
-</div>
-
-<button class="btn-brown">Kirim Laporan</button>
-</div>
 
 <div class="container">
     <div class="top-bar">
