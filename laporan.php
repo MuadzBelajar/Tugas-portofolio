@@ -282,60 +282,90 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
 
 <!-- Content -->
 <div class="content" id="content">
-  <div class="detail-card">
 
-<div class="container">
+  <!-- Card Input -->
+  <div class="detail-card" style="margin-bottom:20px;">
+    <h2>Form Input Siswa</h2>
+    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+      <div class="comment-box">
+        <strong>Nama</strong>
+        <div class="comment-input">
+          <input type="text" placeholder="Masukkan nama..." />
+        </div>
+      </div>
+      <div class="comment-box">
+        <strong>NIS</strong>
+        <div class="comment-input">
+          <input type="text" placeholder="Masukkan NIS..." />
+        </div>
+      </div>
+      <div class="comment-box">
+        <strong>Email</strong>
+        <div class="comment-input">
+          <input type="text" placeholder="Masukkan email..." />
+        </div>
+      </div>
+      <div class="comment-box">
+        <strong>Jurusan</strong>
+        <div class="comment-input">
+          <input type="text" placeholder="Masukkan jurusan..." />
+        </div>
+      </div>
+    </div>
+    <button class="btn-brown" style="margin-top:15px;">Tanda Selesai</button>
+  </div>
+
+  <!-- Card Tabel -->
+  <div class="detail-card">
     <div class="top-bar">
-        <div>
-            <h1>Daftar Laporan Siswa</h1>
-        </div>
-        <div>
-            <a href="laporan.php" class="btn secondary">Refresh</a>
-            <a href="#" class="btn">Tambah Baru</a>
-        </div>
+      <h1>Daftar Laporan Siswa</h1>
+      <div>
+        <a href="laporan.php" class="btn secondary">Refresh</a>
+        <a href="#" class="btn">Tambah Baru</a>
+      </div>
     </div>
 
     <table>
-        <thead>
+      <thead>
+        <tr>
+          <th style="width:56px">No</th>
+          <th>Nama</th>
+          <th>NIS</th>
+          <th>Email</th>
+          <th>Jurusan</th>
+          <th>Gambar</th>
+          <th style="width:200px">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if (empty($siswa)): ?>
+          <tr>
+            <td colspan="7" style="text-align:center; padding:30px;">Data kosong.</td>
+          </tr>
+        <?php else: ?>
+          <?php $i = 1; foreach ($siswa as $row): ?>
             <tr>
-                <th style="width:56px">No</th>
-                <th>Nama</th>
-                <th>NIS</th>
-                <th>Email</th>
-                <th>Jurusan</th>
-                <th>Gambar</th>
-                <th style="width:200px">Aksi</th>
+              <td><?= $i++; ?></td>
+              <td><?= htmlspecialchars($row['nama']); ?></td>
+              <td><?= htmlspecialchars($row['nis']); ?></td>
+              <td><?= htmlspecialchars($row['email']); ?></td>
+              <td><?= htmlspecialchars($row['jurusan']); ?></td>
+              <td>
+                <img src="<?= htmlspecialchars($row['gambar']); ?>" alt="gambar-<?= $i ?>" class="thumb">
+              </td>
+              <td class="aksi-btns">
+                <a href="view.php?nis=<?= urlencode($row['nis']); ?>" class="view">View</a>
+                <a href="edit.php?nis=<?= urlencode($row['nis']); ?>" class="edit">Edit</a>
+                <a href="delete.php?nis=<?= urlencode($row['nis']); ?>" class="delete" onclick="return confirm('Hapus data <?= addslashes($row['nama']) ?>?')">Delete</a>
+              </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php if (empty($siswa)): ?>
-                <tr>
-                    <td colspan="7" style="text-align:center; padding:30px;">Data kosong.</td>
-                </tr>
-            <?php else: ?>
-                <?php $i = 1; foreach ($siswa as $row): ?>
-                <tr>
-                   <tr>
-                     <td><?= $i++; ?></td>
-                     <td><?= htmlspecialchars($row['nama']); ?></td>
-                     <td><?= htmlspecialchars($row['nis']); ?></td>
-                     <td><?= htmlspecialchars($row['email']); ?></td>
-                     <td><?= htmlspecialchars($row['jurusan']); ?></td>
-                     <td>
-                    <img src="<?= htmlspecialchars($row['gambar']); ?>" alt="gambar-<?= $i ?>" class="thumb">
-                  </td>
-                <td class="aksi-btns">
-                  <a href="view.php?nis=<?= urlencode($row['nis']); ?>" class="view">View</a>
-                  <a href="edit.php?nis=<?= urlencode($row['nis']); ?>" class="edit">Edit</a>
-                  <a href="delete.php?nis=<?= urlencode($row['nis']); ?>" class="delete" onclick="return confirm('Hapus data <?= addslashes($row['nama']) ?>?')">Delete</a>
-                </td>
-               </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </tbody>
     </table>
+  </div>
 
-
+</div>
 
 <script>
   function toggleSidebar() {

@@ -18,4 +18,23 @@ function query($query) {
     //mengembalikan data, rows bentuknya sudah array assosiatif
     return $rows;
 }
+ 
+    function tambah ($data) {
+     global $conn;
+    //  ambil data dari tiap elemen dalam form
+     $nis     = htmlspecialchars($data["nis"]);
+     $nama    = htmlspecialchars($data["nama"]);
+     $email   = htmlspecialchars($data["email"]);
+     $jurusan = htmlspecialchars($data["jurusan"]);
+     $gambar  = htmlspecialchars($data["gambar"]);
+ 
+    // query insert data
+        $query = "INSERT INTO siswa
+                    VALUES
+                    ('', '$nis', '$nama', '$email', '$jurusan', '$gambar')";
+        mysqli_query($conn, $query);
+        return mysqli_affected_rows($conn);
+
+    }
+
 ?>
