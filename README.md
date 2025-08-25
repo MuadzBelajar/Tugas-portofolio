@@ -14,4 +14,5 @@ First view of sidebar
 <img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/102a8a18-58eb-4593-ab55-dedf9afadea7" />
 
 Second view of sidebar 
-<img width="1347" height="642" alt="image" src="https://github.com/user-attachments/assets/33cbc25f-56c7-4dc3-985c-94405911c54b" />
+<img width="1348" height="646" alt="image" src="https://github.com/user-attachments/assets/083897c8-6c9d-41ca-abc5-1f823e746478" />
+
