@@ -93,7 +93,7 @@ $siswa = query("SELECT nama FROM siswa");
     /* Content */
    .content {
   margin-left: 60px; 
-  padding: 40px 20px;
+  padding: 5px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* penting → bikin isi nempel kiri */
@@ -109,7 +109,6 @@ $siswa = query("SELECT nama FROM siswa");
   .table-wrapper {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
   overflow: hidden;
   width: 500px;   /* atur lebar tabel, biar ga full */
   margin-left: 0; /* biar rapat kiri */
