@@ -5,10 +5,37 @@ if (!isset($_SESSION['user'])) {
   header("Location: FormLogin.php"); 
   exit;
 }
-
-require 'function.php';
-$siswa = mysqli_query($conn, "SELECT * FROM siswa");
 ?>
+
+<?php
+require_once 'function.php';
+$siswa = query("SELECT * FROM siswa");
+
+// tambah siswa php
+// check apakah tombol submit sudah ditekan atau belum
+if (isset($_POST["submit"])) {
+    // check apakah data berhasil ditambahkan atau tidak
+    if (tambah($_POST) > 0) {
+        echo "
+        <script>
+            alert('data BERHASIL');
+            document.location.href = 'laporan.php';
+        </script>
+        ";
+    } else {
+        echo "
+        <script>
+            alert('data GAGAL');
+            document.location.href = 'laporan.php';
+        </script>
+        ";
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,6 +205,94 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
       color: gray;
     }
 
+/* Form Container mirip Tabel */
+.form-container {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+/* Judul Form */
+.form-container h4 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+/* Grid Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+/* Biar ada yg full width */
+.form-grid .full {
+  grid-column: 1 / 3;
+}
+
+/* Label + Input */
+.form-container label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="file"],
+.form-container select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+  border-color: #16A085;
+  outline: none;
+  box-shadow: 0 0 3px rgba(22,160,133,0.4);
+}
+
+/* Tombol Submit */
+.form-container button {
+  background: #16A085;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-container button:hover {
+  background: #138d75;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid .full {
+    grid-column: 1;
+  }
+}
+
+
     /* Table-rossi */
 
         .table-container {
@@ -257,7 +372,43 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
         @media (max-width:800px) {
             .top-bar { flex-direction:column; align-items:flex-start; gap:8px; }
             th, td { font-size:14px; padding:8px; }
-        } </style>
+        } 
+        
+        /* Style umum tombol */
+.btn {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+  margin: 0 4px;
+}
+
+/* Tombol Ubah */
+.btn-ubah {
+  background-color: #4CAF50; /* hijau */
+  color: white;
+  border: 1px solid #45a049;
+}
+.btn-ubah:hover {
+  background-color: #45a049;
+}
+
+/* Tombol Hapus */
+.btn-hapus {
+  background-color: #f44336; /* merah */
+  color: white;
+  border: 1px solid #d32f2f;
+}
+.btn-hapus:hover {
+  background-color: #d32f2f;
+}
+        
+        
+        
+        </style>
 
 </head>
 <body>
@@ -284,47 +435,51 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
 <div class="content" id="content">
 
   <!-- Card Input -->
-  <div class="detail-card" style="margin-bottom:20px;">
-    <h2>Form Input Siswa</h2>
-    <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
-      <div class="comment-box">
-        <strong>Nama</strong>
-        <div class="comment-input">
-          <input type="text" placeholder="Masukkan nama..." />
-        </div>
+       <h3>Laporan Siswa</h3>
+      <div class="form-container">
+  <h4>Tambah Siswa Baru</h4>
+  <form action="" method="POST" enctype="multipart/form-data" class="form-grid">
+      
+      <div>
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" name="nama" required>
       </div>
-      <div class="comment-box">
-        <strong>NIS</strong>
-        <div class="comment-input">
-          <input type="text" placeholder="Masukkan NIS..." />
-        </div>
+
+      <div>
+        <label for="nis">NIS</label>
+        <input type="text" id="nis" name="nis" required>
       </div>
-      <div class="comment-box">
-        <strong>Email</strong>
-        <div class="comment-input">
-          <input type="text" placeholder="Masukkan email..." />
-        </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
       </div>
-      <div class="comment-box">
-        <strong>Jurusan</strong>
-        <div class="comment-input">
-          <input type="text" placeholder="Masukkan jurusan..." />
-        </div>
+
+      <div>
+        <label for="jurusan">Jurusan</label>
+        <select name="jurusan" id="jurusan">
+            <option value=""></option>
+            <option value="Teknik Informatika">Teknik Informatika</option>
+            <option value="Sistem Informatika">Sistem Informatika</option>
+            <option value="Biomedical">Biomedical</option>
+            <option value="F-MIPA M">F-MIPA M</option>
+            <option value="F-MIPA IPA">F-MIPA IPA</option>
+        </select>
       </div>
-    </div>
-    <button class="btn-brown" style="margin-top:15px;">Tanda Selesai</button>
-  </div>
+
+      <div class="full">
+        <label for="gambar">Gambar Profil</label>
+        <input type="file" name="gambar" id="gambar" accept="image/*">
+      </div>
+
+      <div class="full">
+        <button type="submit" name="submit">Tambah Data Siswa</button>
+      </div>
+
+  </form>
+</div>
 
   <!-- Card Tabel -->
-  <div class="detail-card">
-    <div class="top-bar">
-      <h1>Daftar Laporan Siswa</h1>
-      <div>
-        <a href="laporan.php" class="btn secondary">Refresh</a>
-        <a href="#" class="btn">Tambah Baru</a>
-      </div>
-    </div>
-
     <table>
       <thead>
         <tr>
@@ -351,13 +506,14 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
               <td><?= htmlspecialchars($row['email']); ?></td>
               <td><?= htmlspecialchars($row['jurusan']); ?></td>
               <td>
-                <img src="<?= htmlspecialchars($row['gambar']); ?>" alt="gambar-<?= $i ?>" class="thumb">
+                <img src="<?= htmlspecialchars($row['gambar']); ?>" alt="default.jpg" class="thumb">
               </td>
-              <td class="aksi-btns">
-                <a href="view.php?nis=<?= urlencode($row['nis']); ?>" class="view">View</a>
-                <a href="edit.php?nis=<?= urlencode($row['nis']); ?>" class="edit">Edit</a>
-                <a href="delete.php?nis=<?= urlencode($row['nis']); ?>" class="delete" onclick="return confirm('Hapus data <?= addslashes($row['nama']) ?>?')">Delete</a>
-              </td>
+
+     <td>
+  <a href="ubah.php?no=<?= $row['no']; ?>" class="btn btn-ubah">Ubah</a>
+  <a href="hapus.php?no=<?= $row['no']; ?>" class="btn btn-hapus" onclick="return confirm('Yakin mau hapus?')">Hapus</a>
+</td>
+
             </tr>
           <?php endforeach; ?>
         <?php endif; ?>
@@ -376,5 +532,3 @@ $siswa = mysqli_query($conn, "SELECT * FROM siswa");
 
 </body>
 </html>
-
-
